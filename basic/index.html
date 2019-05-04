@@ -8,9 +8,14 @@
 </head>
 <body>
   <div id="app">
+    <h1 v-once>{{ title }}</h1>
     <input type="text" v-on:input="changeTitle">
     <!-- Cant use curly braces when working with element attributes - see a tag below for eg -->
+   
+    <p>{{ title }}</p>
     <p>{{ sayHowzit() }} - <a v-bind:href="link" target="_blank">Google</a></p>
+    <hr>
+    <p v-html="finishedLink"></p>
   </div>
   <script src="js/vue.js"></script>
   <script src="js/main.js"></script>
