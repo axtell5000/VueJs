@@ -15,6 +15,7 @@
     <p>{{ title }}</p>
     <p>{{ sayHowzit() }} - <a v-bind:href="link" target="_blank">Google</a></p>
     <hr>
+    <!-- VUe doesnt allow us just easily to insert HTML, we need to use a directive - which is a good practice. Dont want any old inserted easily -->
     <p v-html="finishedLink"></p>
   </div>
   <script src="js/vue.js"></script>
