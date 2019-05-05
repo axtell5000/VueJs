@@ -18,6 +18,15 @@
     <!-- VUe doesnt allow us just easily to insert HTML, we need to use a directive - which is a good practice. Dont want any old inserted easily -->
     <p v-html="finishedLink"></p>
   </div>
+  <div id="button">
+    <!-- $event - created by Vue - an object which is a copy of the vanilla js event -->
+    <button v-on:click="increase(2, $event)">Click me</button>
+    <p>{{ counter }}</p>
+    <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}
+      - <span v-on:mousemove.stop="">DEAD SPOT</span><!-- .stop - built in event modifiers for example stop propegation-->
+    </p>
+    <input type="text" v-on:keyup.enter.space="alertMe"><!-- key modifier - in this case function will only run if enter or space key are pressed-->    
+  </div>
   <script src="js/vue.js"></script>
   <script src="js/main.js"></script>
 </body>
