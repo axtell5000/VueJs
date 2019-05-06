@@ -1,6 +1,7 @@
 new Vue({
   el: '#app',
   data: {
+    name: 'Stephen Axtell',
     title: 'Hello World!!',
     titleB: 'Hello World',
     link: 'http://google.com',
@@ -20,7 +21,7 @@ new Vue({
 new Vue({
   el: '#button',
   data: {
-    counter: 0,
+    counter: 0,    
     x: 0,
     y: 0
   },
