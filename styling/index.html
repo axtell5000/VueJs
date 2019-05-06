@@ -17,6 +17,7 @@
         :class="divClasses"></div>
       <!-- div below :class binding to the special Vue class obj, and saying add the red class if true-->
       <div class="demo" :class="{red: attachRed}"></div>
+      <!-- Use an array with different things-->
       <div class="demo" :class="[color, {red: attachRed}]"></div>
       <hr>
       <input type="text" v-model="color"><!-- v-model - two way binding to propety color-->
@@ -24,8 +25,11 @@
     <hr>
     <br>
     <div id="app2">
+        <!-- Bind to the style object to overide property inline-->
         <div class="demo2" :style="{backgroundColor: color}"></div>
+        <!-- Overriding with a computed property-->
         <div class="demo2" :style="myStyle"></div>
+        <!-- Use an array with different things-->
         <div class="demo2" :style="[myStyle, {height: width + 'px'}]"></div>
         <hr>
         <input type="text" v-model="color">
