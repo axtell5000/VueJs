@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <title>Styling</title>
+</head>
+  <body>
+    <div id="app">
+      <!-- using computed property; using the blue class if attachRed is false, use the red class if attachRed is true-->
+      <div 
+        class="demo" 
+        @click="attachRed = !attachRed"
+        :class="divClasses"></div>
+      <!-- div below :class binding to the special Vue class obj, and saying add the red class if true-->
+      <div class="demo" :class="{red: attachRed}"></div>
+      <div class="demo" :class="[color, {red: attachRed}]"></div>
+      <hr>
+      <input type="text" v-model="color"><!-- v-model - two way binding to propety color-->
+    </div>
+    <hr>
+    <br>
+    <div id="app2">
+        <div class="demo2" :style="{backgroundColor: color}"></div>
+        <div class="demo2" :style="myStyle"></div>
+        <div class="demo2" :style="[myStyle, {height: width + 'px'}]"></div>
+        <hr>
+        <input type="text" v-model="color">
+        <input type="text" v-model="width">
+      </div>
+    <script src="app.js"></script>
+  </body>
+</html>
