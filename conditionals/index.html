@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+  <title>Conditionals</title>
+</head>
+  <body>
+    <div id="app">
+      <!-- Works on true/ false. v-if completely removes element from the DOM. Only works on one lement at a time,-->
+      <p v-if="show">You can see me</p>
+      <p v-else>Now you see me</p> <!-- Acts like the vanilla else in Js. Also get added fresh to the DOM-->
+      <template v-if="show"> <!-- Template hml5 element, will only see p tag rendered. Using this can wrap multiple elements to hide them-->
+        <h1>Heading</h1>
+        <p>Inside a template</p>
+      </template>       
+      <p v-show="show">Do you also see me?</p><!-- Isnt removed from DOM, puts on a display: none-->
+      <button @click="show = !show">Switch</button>
+    </div>
+    <div id="app2">
+      <ul>
+        <!-- For optimal performance its best to use key (uniquely id element - like React) -->
+        <li v-for="(ingredient, index) in ingredients" :key="ingredient">{{ ingredient}} - ({{index}})</li>
+      </ul>
+      <hr>
+      <ul>
+        <li v-for="person in persons">
+          <span v-for="(value, key, index) in person">{{ key }}: {{value}} ({{ index }})</span>
+        </li>
+      </ul>
+      <span v-for="n in 10">{{ n }}</span>
+      <hr>
+      <template v-for="(ingredient, i) in ingredients">
+        <h2>{{ingredient}}</h2>
+        <p>{{i}}</p>
+      </template>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
