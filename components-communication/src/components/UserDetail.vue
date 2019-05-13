@@ -10,6 +10,8 @@
 </template>
 
 <script>
+    import { eventBus } from '../main';
+
     export default {
         //props: ['myName'],
         // We can use an Object for props, here we can also force the prop type. Here we must use a String.
@@ -32,7 +34,13 @@
                 this.myName = 'BIg Steppa';
                 this.$emit('nameWasReset', this.myName);
             }
-        }
+        },
+        // A lifecycle hook
+        created() {
+            eventBus.$on('ageWasEdited', (age) => {
+                this.userAge = age;
+            });
+        },
     }
 </script>
 
