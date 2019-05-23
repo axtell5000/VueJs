@@ -1,6 +1,6 @@
 {
   "name": "vue-cli",
-  "description": "A Vue.js project",
+  "description": "Dealing with advanced communication between components",
   "author": "Stephen Axtell",
   "private": true,
   "scripts": {

@@ -3,7 +3,7 @@ new Vue({
   data: {
     name: 'Stephen',
     age: 25,
-    imgUrl: 'https://2.bp.blogspot.com/-x3tpjKhFK7E/VoMEwvPNqrI/AAAAAAABh-U/oyEXybVExEcbLEoD3EpZvU_R7JkgehZQACPcB/s1600/tessafowlerholidaylooksm.jpg'
+    imgUrl: 'https://cdn3.movieweb.com/i/article/HnVm0Cc1x5Os6XolebkVlBmwIcCFV5/798:50/Avengers-Endgame-Question-Marvel-Marketing-Trailer.jpg'
   },
   methods: {
     randomFloat: function() {

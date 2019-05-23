@@ -1,6 +1,6 @@
 {
   "name": "vue-cli",
-  "description": "A Vue.js project",
+  "description": "Working with Vue components",
   "author": "Stephen Axtell",
   "private": true,
   "scripts": {
