@@ -11,6 +11,8 @@
 <script>
 </script>
 
-<style>
-
+<style scoped>
+    p {
+        background: pink;
+    }
 </style>
