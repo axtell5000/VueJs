@@ -91,7 +91,7 @@
                         id="priority"
                         class="form-control"
                         v-model="selectedPriority">
-                        <option v-for="priority in priorities" :selected="priority == 'Medium'">{{ priority }}</option>
+                        <option v-for="(priority, index) in priorities" :key="index" :selected="priority == 'Medium'">{{ priority }}</option>
                     </select>
                 </div>
             </div>

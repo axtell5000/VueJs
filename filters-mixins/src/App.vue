@@ -8,7 +8,7 @@
                 <button @click="fruits.push('Grapes')">Add New Item</button>
                 <input type="text" v-model="filterText">
                 <ul>
-                    <li v-for="fruit in filteredFruits"> {{ fruit }}</li>
+                    <li v-for="(fruit, index ) in filteredFruits" :key="index"> {{ fruit }}</li>
                 </ul>
                 <hr>
                 <app-list></app-list>
