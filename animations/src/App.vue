@@ -4,9 +4,14 @@
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <h1>Animations</h1>
                 <hr>
+                <select v-model="alertAnimation" class="form-control">
+                    <option value="fade">Fade</option>
+                    <option value="slide">Slide</option>
+                </select>
+                <br>
                 <button class="btn btn-primary" @click="show = !show">Show Alert</button>
                 <br><br>
-                <transition name="fade"><!-- Needed for animation and onlt on 1 element-->
+                <transition :name="alertAnimation"><!-- Needed for animation and onlt on 1 element-->
                     <div class="alert alert-info" v-if="show">Here is an info alert</div>
                 </transition>
                 <transition name="slide" type="animation" appear><!-- Appear - show animation on load-->
@@ -17,6 +22,12 @@
                     leave-active-class="animated shake"> <!-- Overwriting default classes used with animation. Leave out the blank ones -->
                     <div class="alert alert-info" v-if="show">Here is an info alert</div>
                 </transition>
+                <!-- Using key is important when one element is replacing another. The elements involved must be uniquely id'd -->
+                <!-- Using mode helps amooth the animation between the two elements-->
+                <transition :name="alertAnimation" mode="out-in"><!-- Needed for animation and onlt on 1 element-->
+                    <div class="alert alert-info" v-if="show" key="info">Here is an info alert</div>
+                    <div class="alert alert-warning" v-else key="warning">Here is a warning alert</div>
+                </transition>
             </div>
         </div>
     </div>
@@ -26,7 +37,8 @@
     export default {
         data() {
             return {
-                show: true
+                show: true,
+                alertAnimation: 'fade'
             };
         }
     }
