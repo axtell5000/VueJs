@@ -28,18 +28,104 @@
                     <div class="alert alert-info" v-if="show" key="info">Here is an info alert</div>
                     <div class="alert alert-warning" v-else key="warning">Here is a warning alert</div>
                 </transition>
+                <hr>
+                <button class="btn btn-primary" @click="load = !load">Load / Remove Element</button>
+                <br><br>
+                <!-- Included some hooks when using javascript for the animations -->
+                <transition
+                    @before-enter="beforeEnter"
+                    @enter="enter"
+                    @after-enter="afterEnter"
+                    @enter-cancelled="enterCancelled"
+                    
+                    @before-leave="beforeLeave"
+                    @leave="leave"
+                    @after-leave="afterLeave"
+                    @leave-cancelled="leaveCancelled"
+                    :css="false"><!-- Telling Vue we are not using css, so it can skip a few steps -->
+                    <div style="width: 400px; height: 200px; background-color: lightgreen" v-if="load"></div>
+                </transition>
+                <hr>
+                <button 
+                    class="btn btn-primary"
+                    @click="selectedComponent == 'app-success-alert' ? selectedComponent = 'app-danger-alert' : selectedComponent = 'app-success-alert'">Toggle Component</button>
+                <br><br>
+                <transition name="fade" mode="out-in">
+                    <component :is="selectedComponent"></component>
+                </transition>
+                
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import DangerAlert from './DangerAlert.vue';
+    import SuccessAlert from './SuccessAlert.vue';
+
     export default {
         data() {
             return {
-                show: true,
-                alertAnimation: 'fade'
+                show: false,
+                alertAnimation: 'fade',
+                load: true,
+                elementWidth: 200,
+                selectedComponent: 'app-success-alert'
             };
+        },
+        methods: {
+            beforeEnter(el) {
+                console.log('beforeEnter');
+                this.elementWidth = 200;
+                el.style.width = this.elementWidth + 'px';
+            },
+            enter(el, done) {
+                console.log('enter');
+                let round = 1;
+                const interval = setInterval(() => {
+                    el.style.width = (this.elementWidth + round * 10) + 'px';
+                    round++;
+                    if (round > 20) {
+                        clearInterval(interval);
+                        done();// this is important when working with JavaScript an d animation, tells it to stop
+                    }
+                }, 20);
+       
+            },
+            afterEnter(el) {
+                console.log('afterEnter');
+            },
+            enterCancelled(el) {
+                console.log('enterCancelled');
+            },
+
+            beforeLeave(el) {
+                console.log('beforeLeave');
+                this.elementWidth = 400;
+                el.style.width = this.elementWidth + 'px';
+            },
+            leave(el, done) {
+                console.log('leave');
+                let round = 1;
+                const interval = setInterval(() => {
+                    el.style.width = (this.elementWidth - round * 10) + 'px';
+                    round++;
+                    if (round > 20) {
+                        clearInterval(interval);
+                        done();// this is important when working with JavaScript an d animation, tells it to stop
+                    }
+                }, 20);
+            },
+            afterLeave(el) {
+                console.log('afterLeave');
+            },
+            leaveCancelled(el) {
+                console.log('leaveCancelled');
+            }
+        },
+        components: {
+            appDangerAlert: DangerAlert,
+            appSuccessAlert: SuccessAlert
         }
     }
 </script>
