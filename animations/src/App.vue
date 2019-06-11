@@ -9,10 +9,14 @@
                 <transition name="fade"><!-- Needed for animation and onlt on 1 element-->
                     <div class="alert alert-info" v-if="show">Here is an info alert</div>
                 </transition>
-                <transition name="slide" type="animation"><!-- Needed for animation and onlt on 1 element-->
+                <transition name="slide" type="animation" appear><!-- Appear - show animation on load-->
                     <div class="alert alert-info" v-if="show">Here is an info alert</div>
                 </transition>
-                
+                <transition 
+                    enter-active-class="animated bounce"                    
+                    leave-active-class="animated shake"> <!-- Overwriting default classes used with animation. Leave out the blank ones -->
+                    <div class="alert alert-info" v-if="show">Here is an info alert</div>
+                </transition>
             </div>
         </div>
     </div>
@@ -22,7 +26,7 @@
     export default {
         data() {
             return {
-                show: false
+                show: true
             };
         }
     }
