@@ -2,7 +2,6 @@
     <div>
         <h1>The User Page</h1>
         <hr>
-        <p>Loaded ID: {{ id }}</p>
         <button @click="navigateToHome" class="btn btn-primary">Go To Home</button>
         <hr>
         <router-view></router-view>
@@ -25,7 +24,7 @@ export default {
     // },
     methods: {
         navigateToHome() {
-            this.$router.push({path: '/'}); // programtically navigating
+            this.$router.push({name: 'home'}); // programtically navigating, also using named path
         }
     }
 }
