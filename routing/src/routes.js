@@ -10,5 +10,7 @@ export const routes = [
     {path: '', component: UserStart},
     {path: ':id', component: UserDetail},
     {path: ':id/edit', component: UserEdit, name: 'userEdit'}
-  ]} 
+  ]},
+  { path: '/redirect', redirect: '/user'}, // redirect
+  { path: '*', redirect: '/'} // A redirect catch all
 ];
