@@ -20,6 +20,14 @@
                     hash: '#data'
                 }                    
             }
+        },
+        // here we are checking at component level using a lifecycle hook. Normally at this point we wont have access to its properties
+        beforeRouteEnter (to, from, next) {
+            if(true) {
+                next();
+            } else {
+                next(false); // not allowing to continue
+            }    
         }
     }
 </script>

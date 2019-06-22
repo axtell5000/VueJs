@@ -23,6 +23,12 @@ const router = new VueRouter({
   }
 });
 
+// this allows us to do something after each router change
+router.beforeEach((to,from,next) => {
+  console.log("Global before each");
+  next();
+});
+
 new Vue({
   el: '#app',
   router: router,  
