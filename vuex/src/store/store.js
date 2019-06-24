@@ -18,11 +18,29 @@ export const store = new Vuex.Store({
   },
   // mutations just like this can only work with synchronous code, if needed to work with async code one needs to work with actions
   mutations: {
-    increment: state => {
-      state.counter++;
+    increment: (state, payload) => {
+      state.counter += payload;
     },
-    decrement: state => {
-      state.counter--;
+    decrement: (state, payload) => {
+      state.counter -= payload;
+    }
+  },
+  actions: {
+    increment: ({ commit }, payload) => {
+      commit('increment', payload);
+    },
+    decrement: ({ commit }, payload) => {
+      commit('decrement', payload);
+    },
+    asyncIncrement: ( {commit}, payload ) => {
+      setTimeout(() => {
+        commit('increment', payload.by);
+      }, payload.duration);
+    },
+    asyncDecrement: ( {commit}, payload ) => {
+      setTimeout(() => {
+        commit('decrement', payload.by);
+      }, payload.duration);
     }
   }
 });
