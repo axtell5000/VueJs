@@ -16,6 +16,7 @@ export const store = new Vuex.Store({
       return state.counter + ' Clicks';
     }
   },
+  // mutations just like this can only work with synchronous code, if needed to work with async code one needs to work with actions
   mutations: {
     increment: state => {
       state.counter++;
