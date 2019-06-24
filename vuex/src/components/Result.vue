@@ -6,7 +6,7 @@
     export default {
         computed: {
             counter() {
-                return this.$store.state.getters.doubleCounter;
+                return this.$store.getters.doubleCounter;
             }
         }
     }

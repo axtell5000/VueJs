@@ -6,14 +6,15 @@
 </template>
 
 <script>
+    import { mapMutations } from 'vuex';
+
+    // like getterrs, mutations must use the 3 dots to allow for more flexibilty
     export default {
         methods: {
-            increment() {
-                this.$store.state.counter++;
-            },
-            decrement() {
-                this.$store.state.counter--;
-            }
+            ...mapMutations([
+                'increment',
+                'decrement'
+            ])
         }
     }
 </script>
