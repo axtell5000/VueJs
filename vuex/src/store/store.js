@@ -1,56 +1,23 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import counter from './modules/counter';
+import * as actions from './actions';
+import * as getters from './getters';
+import * as mutations from './mutations';
+
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-  state: {
-    counter: 0,
+  state: {    
     value: 0
   },
   // getters - like computed function for the store. Centralizes functions that uses the state from the store
-  getters: { 
-    doubleCounter: state => {
-      return state.counter * 2;
-    },
-    stringCounter: state => {
-      return state.counter + ' Clicks';
-    },
-    value: state => {
-      return state.value
-    }
-  },
+  getters: getters,
   // mutations just like this can only work with synchronous code, if needed to work with async code one needs to work with actions
-  mutations: {
-    increment: (state, payload) => {
-      state.counter += payload;
-    },
-    decrement: (state, payload) => {
-      state.counter -= payload;
-    },
-    updateValue: (state, payload) => {
-      state.value = payload;
-    }
-  },
-  actions: {
-    increment: ({ commit }, payload) => {
-      commit('increment', payload);
-    },
-    decrement: ({ commit }, payload) => {
-      commit('decrement', payload);
-    },
-    asyncIncrement: ( {commit}, payload ) => {
-      setTimeout(() => {
-        commit('increment', payload.by);
-      }, payload.duration);
-    },
-    asyncDecrement: ( {commit}, payload ) => {
-      setTimeout(() => {
-        commit('decrement', payload.by);
-      }, payload.duration);
-    },
-    updateValue({commit}, payload) {
-      commit('updateValue', payload);
-    }
+  mutations: mutations,
+  actions,
+  modules: {
+    counter: counter
   }
 });

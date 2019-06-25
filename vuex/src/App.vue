@@ -25,6 +25,7 @@
 
     export default {
         computed: {
+            // if you have to use two way binding with vuex, you have to do it like below with get and set
             value: {
                 get() {
                     return this.$store.getters.value;
