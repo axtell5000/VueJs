@@ -69,8 +69,6 @@
 </template>
 
 <script>
-  import axios from '../../axios-auth'; // using the custom instance of axios
-
   export default {
     data () {
       return {
@@ -104,10 +102,9 @@
           hobbies: this.hobbyInputs.map(hobby => hobby.value),
           terms: this.terms
         };
-        axios.post('/users.json', formData)
-          .then(res => console.log(res))
-          .catch(error => console.log(error));
+        
         console.log(formData);
+        this.$store.dispatch('signup', formData);
       }
     }
   }

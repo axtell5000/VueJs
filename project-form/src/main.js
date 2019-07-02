@@ -7,7 +7,7 @@ import store from './store';
 
 // Setting some axios defaults, which are availible accross the app
 axios.defaults.baseURL = 'https://vuejs-form-project.firebaseio.com';
-axios.defaults.headers.common['Authorization'] = 'dasghsf';
+// axios.defaults.headers.common['Authorization'] = 'dasghsf';
 axios.defaults.headers.get['Accepts'] = 'application/json';
 
 // Working with interceptors(middleware) to do something before response or request
