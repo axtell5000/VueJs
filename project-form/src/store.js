@@ -35,7 +35,7 @@ export default new Vuex.Store({
       }, expirationTime * 1000);
     },
     signup({commit, dispatch}, authData) {
-      axios.post('/signupNewUser?key=[insert your firebase project api here]', {
+      axios.post('/signupNewUser?key=[Need a firebase key]', {
         email: authData.email,
         password: authData.password,
         returnSecureToken: true
@@ -61,7 +61,7 @@ export default new Vuex.Store({
       .catch(error => console.log(error));
     },
     login({commit, dispatch}, authData) {
-      axios.post('/verifyPassword?key=[insert your firebase project api here]', {
+      axios.post('/verifyPassword?key=[Need a firebase key]', {
         email: authData.email,
         password: authData.password,
         returnSecureToken: true
